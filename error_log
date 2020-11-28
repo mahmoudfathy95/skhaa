@@ -1,0 +1,6 @@
+[10-Nov-2020 20:42:27 UTC] PHP Fatal error:  Cannot use App\Models\branches as branches because the name is already in use in /home/sotksa/test2.sotk-sa.com/app/Http/Controllers/Api/OrderApiController.php on line 23
+[20-Nov-2020 18:54:44 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Api\Controller' not found in /home/sotksa/test2.sotk-sa.com/app/Http/Controllers/Api/ContactApiController.php on line 12
+[20-Nov-2020 18:59:03 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Api\Controller' not found in /home/sotksa/test2.sotk-sa.com/app/Http/Controllers/Api/ContactApiController.php on line 12
+[21-Nov-2020 12:31:40 UTC] PHP Fatal error:  Cannot re-assign $this in /home/sotksa/test2.sotk-sa.com/app/Http/Resources/NewProductsResource.php on line 27
+[21-Nov-2020 23:58:45 UTC] PHP Fatal error:  'continue' not in the 'loop' or 'switch' context in /home/sotksa/test2.sotk-sa.com/app/Http/Resources/ProductResource.php on line 78
+[21-Nov-2020 23:58:58 UTC] PHP Fatal error:  'break' not in the 'loop' or 'switch' context in /home/sotksa/test2.sotk-sa.com/app/Http/Resources/ProductResource.php on line 78

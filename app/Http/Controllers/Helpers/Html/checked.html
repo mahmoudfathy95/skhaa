@@ -1,0 +1,25 @@
+<div class="bootstrap-checkbox"" id="stepActivateDeactivate" {attribute}>
+
+  <input type="checkbox" {checked} row_id="{id}" name="is_active" class="switch" id="example{id}" >
+
+  <label class="onoffswitch-label" for="example{id}">
+    <span class="onoffswitch-inner"></span>
+    <span class="onoffswitch-switch"></span>
+  </label>
+  <script type="text/javascript">
+
+    $("#example{id}").on('click', function () {
+      var row_id = $(this).attr('row_id');
+
+      var uri = "{url}/" + row_id;
+      $.ajax({
+        method: "GET",
+        url: uri,
+        success: function (result) {
+        }
+      });
+
+    });
+
+  </script>
+</div>

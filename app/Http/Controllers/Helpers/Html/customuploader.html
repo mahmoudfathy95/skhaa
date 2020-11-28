@@ -1,0 +1,50 @@
+<div class="uploader ">
+    <img src="./assets/images/loading.gif" style="display: none" id="{css_classes}-loading"/>
+    <img src="profile_picture" id="upload-{css_classes}" class="image-upload" width="120" height="120" />
+    <br/>
+    <a href="javascript:void(0)" class="file-input btn btn-primary">
+        <input type="file" class="file btn-primary" id="{css_classes}-button">
+    </a>
+</div>
+<div id="{css_classes}-result"></div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+//    alert('hi');
+    $('#{css_classes}-button').change(function (){
+//        console.log('hi');
+       var file_data = $(this).prop('files')[0];   
+        var form_data = new FormData();                  
+        form_data.append('file', file_data);
+//        alert(form_data); 
+        $('#{css_classes}-loading').show();
+        $('#upload-{css_classes}').hide();
+        $.ajax({
+            url: './backend/ajax/upload', // point to server-side PHP script 
+            dataType: 'text',  // what to expect back from the PHP script, if anything
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,                         
+            type: 'post',
+            success: function(response){
+                var data=jQuery.parseJSON(response);
+                //alert(response);
+                if(data.status==='ok'){
+                    $('#{css_classes}-loading').hide();
+                    $('#upload-{css_classes}').attr('src',data.data);
+                    $('#upload-{css_classes}').show();
+                    $('#{css_classes}-result').html('<input type="hidden" name="{name}" value="'+data.file+'"  />');
+                }else{
+                    $('#{css_classes}-result').html('<div class="alert alert-danger alert-dismissible" role="alert">'+
+                                        '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>'+
+                                        ''+data.data+'.</div>');
+                    $('#{css_classes}-loading').hide();
+                    $('#upload-{css_classes}').show();
+                                    
+                }
+            }
+        });
+    });
+});
+</script>

@@ -1,0 +1,53 @@
+<?php
+
+return[
+    'products' => 'All Products',
+    'filter' => 'Filter By',
+    'found' => ' Items found',
+    'more' => '& more',
+    'best_match' => 'Best Match',
+    'top_rate' => 'Top Rated',
+    'low_price' => 'Lowest Price',
+    'high_price' => 'Highest Price',
+    'new' => 'New In',
+    'load_more'=>'more',
+
+    'filterbtn' => 'Filter',
+    'reviews' => 'Customer Reviews',
+    'save' => 'You Save',
+    'add_wishlist' => 'Add to Wish List',
+    'volume' => 'Volume',
+    'quantity' => 'Quantity',
+    'left' => 'left in store',
+    'only' => 'Left',
+    'add_cart' => 'ADD TO CART',
+    'delivery' => 'Delivery',
+    'estimated' => 'Estimated between',
+    'return' => 'Returns',
+    '14days' => '14 days return',
+    'review' => 'Review',
+    'write_review' => 'write a review',
+    'rate' => 'Rate this Product',
+    'range' => 'Price Range in',
+    'sort' => 'Sort By',
+    'and' => 'to',
+    'avarage'=>'Avarage Rating',
+    'link','Link',
+    'usd'=>'Dollar',
+    'sar'=>'Riyal',
+       'load'=>'More' ,
+    'from'=>'From',
+    'to'=>'To',
+    'optional'=>'Optional',
+    'reviews' => 'Customer reviews',
+    'top_reviews' => 'Top customer reviews',
+    'payment' => 'Payment',
+    'price'=>'Price',
+    'share'=>'Share',
+    'off'=>'Off',
+    'rate_order'=>'Rate This Order',
+    'beneficial'=>'Beneficial for'
+
+
+];
+

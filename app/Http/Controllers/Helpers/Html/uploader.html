@@ -1,0 +1,48 @@
+<div class="uploader {css_classes}">
+    <img src="./assets/images/loading.gif" style="display: none" id="upload-loading"/>
+    <img src="profile_picture" id="upload-image" class="image-upload" width="120" height="120" />
+    <br/>
+    <a href="javascript:void(0)" class="file-input btn btn-primary">
+        <input type="file" name="product_main_image" class="file btn-primary" id="upload-button">
+    </a>
+</div>
+<div id="upload-result"></div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+    $('#upload-button').change(function (){
+       var file_data = $(this).prop('files')[0];
+        var form_data = new FormData();
+        form_data.append('file', file_data);
+        //alert(form_data);
+        $('#upload-loading').show();
+        $('#upload-image').hide();
+        $.ajax({
+            url: './backend/ajax/upload', // point to server-side PHP script
+            dataType: 'text',  // what to expect back from the PHP script, if anything
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'GET',
+            success: function(response){
+                var data=jQuery.parseJSON(response);
+                //alert(response);
+                if(data.status==='ok'){
+                    $('#upload-loading').hide();
+                    $('#upload-image').attr('src',data.data);
+                    $('#upload-image').show();
+                    $('#upload-result').html('<input type="hidden" name="image" value="'+data.file+'"  />');
+                }else{
+                    $('#upload-result').html('<div class="alert alert-danger alert-dismissible" role="alert">'+
+                                        '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>'+
+                                        ''+data.data+'.</div>');
+                    $('#upload-loading').hide();
+                    $('#upload-image').show();
+
+                }
+            }
+        });
+    });
+});
+</script>

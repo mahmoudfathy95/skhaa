@@ -1,0 +1,253 @@
+
+.file_manager {
+    background: none repeat scroll 0 0 #fff;
+    border-radius: 2px;
+    box-shadow: -1px 2px 5px #aeaeae;
+    display: none;
+    margin: 2%;
+    min-height: 90%;
+    position: fixed;
+    width: 96%;
+    z-index: 1100;
+}
+.file_manager_header {
+    border-bottom: 1px solid #eee;
+    height: 50px;
+    width: 100%;
+}
+.file_manager_tabs {
+    padding: 0 10px;
+    position: relative;
+    top: 17px;
+    width: 100%;
+}
+.file_manager_content {
+    display: block;
+    float: left;
+    min-height: 250px;
+    width: 100%;
+}
+.file_manager_footer {
+    background: none repeat scroll 0 0 #f9f9f9;
+    border-top: 1px solid #eee;
+    bottom: 0;
+    float: left;
+    height: 60px;
+    margin: 0;
+    padding-top: 13px;
+    position: absolute;
+    width: 100%;
+    z-index: 9999;
+}
+.file_manager_close {
+    cursor: pointer;
+    font-size: 18px;
+    left: 11px;
+    position: absolute;
+    top: 11px;
+}
+.file_manager iframe {
+    border: 0 none;
+}
+.dz-thumbnail > img {
+    max-width: 133px;
+}
+.cinema {
+    background: none repeat scroll 0 0 #000000;
+    display: none;
+    height: 100%;
+    opacity: 0.4;
+    position: fixed;
+    width: 100%;
+    z-index: 1060;
+}
+.dz-error:hover .dz-error-message, .dz-success .dz-success-mark {
+    display: none;
+}
+.media-grid-wrapper {
+    height: 472px;
+    overflow-y: scroll;
+    width: 69%;
+}
+.dz-preview {
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 15px 0 0 15px;
+    padding: 1px 11px;
+    vertical-align: top;
+    width: 160px;
+}
+.dz-preview.active {
+    border: 3px solid #1e8cbe;
+}
+#library-area {
+    background: none repeat scroll 0 0 #f1f1f1;
+    float: left;
+    width: 100%;
+}
+.media-grid-wrapper {
+    background: none repeat scroll 0 0 #fff;
+}
+.modal-dialog {
+    z-index: 2147483647;
+}
+.upload_errors {
+    display: block;
+    height: 100px;
+}
+.right-mark {
+    display: none;
+}
+.dz-preview .right-mark {
+    display: none;
+}
+.dz-preview.active .right-mark {
+    background: none repeat scroll 0 0 #1e8cbe;
+    color: #fff;
+    display: inline-block;
+    float: left !important;
+    margin-left: -22px;
+    margin-top: -9px;
+    padding: 4px;
+    position: relative;
+    z-index: 17;
+}
+.dropzone-box {
+    background: none repeat scroll 0 0 #f7f7f4;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    height: 450px;
+    min-height: 284px;
+    padding: 0 15px 15px 0;
+    position: relative;
+    transition: all 0.2s ease 0s;
+    vertical-align: middle;
+    width: 100%;
+}
+.details-box-image img {
+    width: 100%;
+}
+.details-box-name .file_name {
+    font-weight: bold;
+}
+.non-editable .media-grid-wrapper {
+    width: 100%;
+}
+.non-editable .media-form-wrapper {
+    display: none;
+}
+.vid {
+    color: #707070;
+    font-size: 43px !important;
+    left: 30px;
+    opacity: 0.6;
+    position: absolute;
+    top: 17px;
+}
+#upload-area {
+    height: 485px;
+    max-height: 485px;
+    overflow-y: scroll;
+    padding: 10px;
+}
+.upload-area-list {
+    margin-right: 66px;
+}
+.search-area-list {
+    float: left !important;
+    margin: -8px 25px 0 52px !important;
+    width: 300px;
+}
+
+
+.filter-bar{
+    width: 4%;
+    float:right
+}
+
+.filter-bar a {
+    color: #848484;
+    display: block;
+    font-size: 19px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 100%;
+}
+
+.filter-bar a.active {
+    background: #fff;
+}
+
+.non-editable {
+    float: left;
+    width: 96%;
+}
+
+
+.media_loader{
+    display: none;
+}
+
+.mediaform {
+    height:430px;
+
+}
+
+.gallery_rows {
+    height: 500px;
+    margin: 11px 6px;
+    overflow-y: scroll;
+}
+
+.gallery_row {
+    background: none repeat scroll 0 0 #f3f3f3;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    box-shadow: -3px -2px 0 #fff;
+    cursor: pointer;
+    height: 83px;
+    margin: 10px 0 0 10px;
+    overflow: hidden;
+    padding: 7px;
+    margin-right: 10px;
+}
+
+.gallery_row.active {
+  background: none repeat scroll 0 0 #5d5d5d;
+  border: 1px solid #a9a9a9;
+  
+}
+
+.gallery_row.active *{
+    color: #f1f1f1 !important;
+}
+
+
+.gallery_row .gallery_image {
+    float: left;
+    width: 33%;
+}
+
+.gallery_row .gallery_image img {
+    height: 64px;
+    width: 64px;
+}
+
+.gallery_row .gallery_details {
+    float: right;
+    padding-left: 4px;
+    width: 66%;
+}
+
+.gallery_row .gallery_details .gallery_details_name {
+    color: #6e6e6e;
+    font-weight: bold;
+}
+
+.gallery_row .gallery_details .gallery_details_count {
+    color: #8c8c8c;
+}

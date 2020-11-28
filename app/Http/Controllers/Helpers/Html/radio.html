@@ -1,0 +1,20 @@
+<div class="i-checks" {attribute}>
+    <label> 
+        <input type="radio" name="{name}" {checked} value="radio" id="radio{id}" row_id="{id}"> <i></i> 
+    </label>
+    <script type="text/javascript">
+
+           $("input[name={name}]").on('change', function () {
+                var row_id = $(this).attr('row_id');
+
+                var uri = "{url}/" + row_id;
+                $.ajax({
+                    method: "GET",
+                    url: uri,
+                    success: function (result) {
+                    }
+                });
+            });
+
+    </script>
+</div>

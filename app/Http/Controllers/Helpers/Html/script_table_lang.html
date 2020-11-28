@@ -1,0 +1,32 @@
+<script type="text/javascript">
+  $('.table-loading').hide();
+  $(document).ready(function () {
+    var url = '{url}';
+    $('.change-language').on('click', function () {
+      var _this = $(this);
+      var lang_id = _this.attr('attr_id');
+      $.ajax({
+        url: url,
+        method: 'GET',
+        data: "lang_id=" + lang_id,
+        beforeSend: function () {
+          $('.table-loading').show();
+          $('.language-data').hide();
+        },
+        success: function (response) {
+          if (response !== '') {
+            $('.language-data').html(response);
+            $(window).resize();
+          } else
+          {
+            $('.table-loading').hide();
+          }
+        },
+        complete: function () {
+          $('.table-loading').hide();
+          $('.language-data').show();
+        }
+      });
+    });
+  });
+</script>

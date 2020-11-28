@@ -1,0 +1,41 @@
+<button class="btn btn-xs btn-outline btn-danger btn_row_id" id="delete{row_id}" row_id="{row_id}" {attribute}> <i class="fa fa-trash" id="stepDelete"></i></button>
+
+<script type="text/javascript">
+  $('#delete{row_id}').click(function (t) {
+    var me = $(this);
+
+    t.preventDefault();
+    swal({
+      title: "Are you sure?",
+      text: "You will not be able to recover this data!",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yes, delete it!",
+      closeOnConfirm: false
+    }, function () {
+
+      var row_id = me.attr('row_id');
+      var uri = "{url}/" + row_id;
+      $.ajax({
+        method: "GET",
+        url: uri,
+        success: function (response) {
+          response = jQuery.parseJSON(response);
+          if (response.status === 'Ok') {
+            if (me.closest('tr').length > 0){
+            me.closest('tr').remove();
+            }
+            if (me.closest('div[class="faq-item"]').length > 0){
+            me.closest('div[class="faq-item"]').remove();
+            }
+            swal('Deleted!', response.message, 'success');
+          } else {
+            swal('Can not be Deleted!', response.message, 'warning');
+          }
+        }
+
+      });
+    });
+  });
+</script>
