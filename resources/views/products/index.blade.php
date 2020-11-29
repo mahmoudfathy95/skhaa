@@ -43,13 +43,15 @@ use App\Http\Controllers\Helpers\Functions;
 
                                 <tr>
 
-                                    <th width="10%">Id</th>
+                                    <th width="10%">التسلسل</th>
 
-                                    <th width="15%">Product Name</th>
+                                    <th width="15%">الاسم </th>
 
-                                    <th width="15%">Product Price</th>
+                                    <th width="15%">السعر </th>
 
-                                    <th width="15%">Product Details</th>
+                                    <th width="15%"> اسم القسم</th>
+                                    
+                                    <th width="15%"> اسم القسم الفرعي</th>
 
                                     <th width="15%">Created At</th>
 
@@ -95,7 +97,8 @@ use App\Http\Controllers\Helpers\Functions;
                 { data: 'id', name: 'id' },
                 { data: 'product_name_ar', name: 'product_name_ar' },
                 { data: 'product_price', name: 'product_price' },
-                { data: 'product_details_ar', name: 'product_details_ar' },
+                { data: 'category_name', name: 'category_name' },
+                { data: 'subcategory_name', name: 'subcategory_name' },
                 { data: 'created_at', name: 'created_at' },
                 { data: 'action', name: 'action' , orderable: false},
 

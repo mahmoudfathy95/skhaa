@@ -152,46 +152,7 @@ if(auth()->user()->hasRole('owner') || auth()->user()->hasRole('super_admin')){
                             <div class="row col-sm-12">
 
 
-                                    <div class="col-sm-3">
-                                        <label class="control-label">أسم المدينة</label>
-                                        <select class="form-control select" name="city_id" id="selectCities"  @if(! $admin_status) onchange="cahngeCityBranches(event)" @endif required="required">
-                                            
-                                            <?php $counter = 0; ?>
-
-                                            @foreach($cities as $city_id => $city_name)
-                                            
-                                            <?php
-                                                if($counter == 0){
-                                                    $main_city_id = $city_id;
-                                                    $counter++;
-                                                }
-                                                
-                                            ?>
-
-                                                <option value="{{$city_id}}" @if($city_id == $product->city_id) selected @endif >{{$city_name}}</option>
-
-                                            @endforeach
-
-                                        </select>
-                                    </div>
                                     
-                                    <div class="col-sm-3">
-                                            <label class="control-label"> اسم الفرع </label>
-                                            <select class="form-control select" name="branch_id" id="selectBranches" required="required">
-                                                @if($status == 'edit')
-                                                    <?php $selectBranches = $branches[$product->city_id] ?>
-                                                @else
-                                                    <?php $selectBranches = $branches[$main_city_id] ?>
-                                                @endif
-    
-                                                @foreach($selectBranches as $branch_id => $branch_name)
-    
-                                                    <option value="{{$branch_id}}" @if($branch_id == $product->branch_id) selected @endif >{{$branch_name}}</option>
-    
-                                                @endforeach
-    
-                                            </select>
-                                        </div>
 
                                 <div class="col-sm-3">
                                     <label class="control-label"> اسم القسم</label>
@@ -285,7 +246,7 @@ if(auth()->user()->hasRole('owner') || auth()->user()->hasRole('super_admin')){
                             <div class="product_images_cont">
                                 @if($status == 'edit')
                                     @foreach($product->product_images as $image)
-                                        <input type="hidden" id="product_images" name="product_images[]" value="{{$image}}"  />
+                                        <input type="hidden" id="{{$image}}" name="product_images[]" value="{{$image}}"  />
                                     @endforeach
                                 @endif
                             </div>
@@ -355,9 +316,8 @@ if(auth()->user()->hasRole('owner') || auth()->user()->hasRole('super_admin')){
         var CategoriesOptions = @json($categories);
         //alert(JSON.stringify(Options));
 
-        var newBranchesOptions = @json($branches[$main_city_id]);
         var newsubCategoriesOptions = @json($sub_categories[$main_category_id]);
-
+/*
         var $elCities = $("#selectCities");
         $elCities.empty(); // remove old options
         $.each(CitiesOptions, function(key,value) {
@@ -371,7 +331,7 @@ if(auth()->user()->hasRole('owner') || auth()->user()->hasRole('super_admin')){
         $elBranches.append($("<option></option>")
             .attr("value", key).text(value));
         });
-
+*/
         var $elCategories = $("#selectCategories");
         $elCategories.empty(); // remove old options
         $.each(CategoriesOptions, function(key,value) {
@@ -540,6 +500,8 @@ if(auth()->user()->hasRole('owner') || auth()->user()->hasRole('super_admin')){
                 //alert(file.name);
                 name = file.name;
             }
+            
+            var deletedElm = document.getElementById(name);
 
             $.ajax({
                 headers: {
@@ -555,13 +517,15 @@ if(auth()->user()->hasRole('owner') || auth()->user()->hasRole('super_admin')){
                     console.log(e);
                 }});
                 var fileRef;
+                deletedElm.remove();
                 return (fileRef = file.previewElement) != null ?
                 fileRef.parentNode.removeChild(file.previewElement) : void 0;
         },
 
         success: function(file, response)
         {
-            var inp = '<input type="hidden" id="product_images" name="product_images[]" value="products/' + response.success + '"  />';
+            //alert(response.success);
+            var inp = '<input type="hidden" id="products/"' + response.success + ' name="product_images[]" value="products/' + response.success + '"  />';
             $(".product_images_cont").append(inp);
 
             console.log(response.success);

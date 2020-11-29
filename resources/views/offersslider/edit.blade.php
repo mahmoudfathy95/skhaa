@@ -49,7 +49,7 @@ else{
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title"><b>تعديل السلايدر</b><a href="{{url('backend/offersslider')}}" class="btn btn-primary" style="float:left;">رجوع</a></h4>
+                    <h4 class="card-title"><b>تعديل السلايدر   </b></h4>
 
                 </div>
                 <div class="card-content collapse show">
@@ -250,7 +250,7 @@ else{
 
         success: function(file, response)
         {
-            var inp = '<input type="hidden" id="slider_images" name="slider_images[]" value="offerssliders/' + response.success + '"  />';
+            var inp = '<input type="hidden" id="offerssliders/"' + response.success + ' name="slider_images[]" value="offerssliders/' + response.success + '"  />';
             $(".slider_images_cont").append(inp);
 
             console.log(response.success);

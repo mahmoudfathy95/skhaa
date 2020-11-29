@@ -191,7 +191,7 @@ class ProductsController extends Controller
             //'quantity' => 'required',
             'product_details' => 'required',
             'product_details_ar' => 'required',
-            'city_id' => 'required',
+            //'city_id' => 'required',
             //'branch_id' => 'required',
             'category_id' => 'required',
             'subcategory_id' => 'required',
@@ -199,7 +199,7 @@ class ProductsController extends Controller
             'barcode' => 'required',
             'product_unit' => 'required',
             'product_main_image' => 'required',
-            'product_images' => 'required|array|min:1',
+            //'product_images' => 'required|array|min:1',
         ];
         $validator = Validator::make($request->except('_token','save','discount','discount_value'), $rules);
 
@@ -210,11 +210,22 @@ class ProductsController extends Controller
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else{
-            if(! $admin_status){
                 $data = $validator->valid();
+                $defaultValue = array();
+                $data['product_images'] = $data['product_images'] ?? $defaultValue;
+                /*
+                if($request->product_images != null){
+                    $data['product_images'] = $request->product_images;
+                }else{
+                    $data['product_images'] = array();
+                }
+                */
+                
+            if(! $admin_status){
+                //$data = $validator->valid();
                 $discount = ($request->discount) ? 1 : 0;
                 $data['discount'] = $discount;
-                $data['branch_id'] = $branch_id;
+                //$data['branch_id'] = $branch_id;
     
                 $product = products::create($data);
     
@@ -228,10 +239,10 @@ class ProductsController extends Controller
                 session()->flash('class', 'alert-success');
                 return redirect::to('backend/products');
             }else{
-                $data = $validator->valid();
+                //$data = $validator->valid();
                 $discount = ($request->discount) ? 1 : 0;
                 $data['discount'] = $discount;
-                $data['branch_id'] = $branch_id;
+                //$data['branch_id'] = $branch_id;
     
                 $product = products::create($data);
     
@@ -301,7 +312,7 @@ class ProductsController extends Controller
             //'quantity' => 'required',
             'product_details' => 'required',
             'product_details_ar' => 'required',
-            'city_id' => 'required',
+            //'city_id' => 'required',
             //'branch_id' => 'required',
             'category_id' => 'required',
             'subcategory_id' => 'required',
@@ -313,8 +324,8 @@ class ProductsController extends Controller
             ];
             $validator = Validator::make($request->except('_token','save','product_id','discount','discount_value'), $rules);
         }
-
         
+        //dd($request->product_images);
         
         //dd($validator);
 
@@ -327,6 +338,16 @@ class ProductsController extends Controller
         else{
             
             $data = $validator->valid();
+            
+            $defaultValue = array();
+            $data['product_images'] = $data['product_images'] ?? $defaultValue;
+            /*
+            if($request->product_images != null){
+                $data['product_images'] = $request->product_images;
+            }else{
+                $data['product_images'] = array();
+            }
+            */
             //dd($data);
             
             if (!(auth()->user()->hasRole('owner') || auth()->user()->hasRole('super_admin'))) {

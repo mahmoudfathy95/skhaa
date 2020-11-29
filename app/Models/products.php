@@ -14,7 +14,7 @@ class products extends Model
         'product_images' => 'array',
     ];
     
-    protected $appends = ['quantity'];
+    protected $appends = ['quantity','category_name','subcategory_name'];
     
     function getQuantityAttribute(){
         
@@ -42,6 +42,18 @@ class products extends Model
             return $quantity;
         }
 
+    }
+    
+    function getCategoryNameAttribute(){
+        
+        $category_name = categories::find($this->category_id)->category_name_ar;
+        return $category_name;
+        
+    }
+    
+    function getSubcategoryNameAttribute(){
+        $subcategory_name = sub_categories::find($this->subcategory_id)->subcategory_name_ar;
+        return $subcategory_name;
     }
     
     
