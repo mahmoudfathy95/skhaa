@@ -181,7 +181,7 @@ class ProductsController extends Controller
             $request['branch_id'] = $branch_id;
         }else{
             $admin_status = 1;
-            $branches = $this->branches[$request->city_id];
+            //$branches = $this->branches[$request->city_id];
         }
 
         $rules = [
@@ -250,7 +250,10 @@ class ProductsController extends Controller
                     $discount = 1;
                     $discountStoreData = ['type' => $request->discount, 'value' => $request->discount_value, 'product_id' => $product->id];
                     discounts::create($discountStoreData);
-                    }
+                }
+                
+                $branches = branches::all();
+                
                 foreach($branches as $branch_id => $branch_name){
                     product_quantity::create(['branch_id' => $branch_id,'product_id' => $product->id, 'quantity' => 0]);
                     
